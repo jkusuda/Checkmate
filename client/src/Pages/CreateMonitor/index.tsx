@@ -766,8 +766,8 @@ const CreateMonitorPage = () => {
 			/>
 
 			<ConfigBox
-				title="Escalation Rules"
-				subtitle="If the monitor stays down for the specified time, notify additional channels."
+				title={t("pages.createMonitor.form.escalation.title")}
+				subtitle={t("pages.createMonitor.form.escalation.description")}
 				rightContent={
 					<Stack spacing={theme.spacing(LAYOUT.MD)}>
 						<Controller
@@ -779,7 +779,7 @@ const CreateMonitorPage = () => {
 									type="number"
 									value={field.value ?? 0}
 									onChange={(e) => field.onChange(Number(e.target.value))}
-									fieldLabel="Escalate after (minutes)"
+									fieldLabel={t("pages.createMonitor.form.escalation.option.timeout.label")}
 									fullWidth
 									error={!!fieldState.error}
 									helperText={fieldState.error?.message ?? ""}
@@ -799,11 +799,9 @@ const CreateMonitorPage = () => {
 								);
 								return (
 									<Stack spacing={theme.spacing(LAYOUT.MD)}>
-										<Typography variant="body2" sx={{ mb: -1 }}>
-											Escalation notification channels
-										</Typography>
 										<Autocomplete
 											multiple
+											fieldLabel={t("pages.createMonitor.form.escalation.option.channels.label")}
 											options={notificationOptions}
 											value={selectedNotifications}
 											getOptionLabel={(option) => option.name}
